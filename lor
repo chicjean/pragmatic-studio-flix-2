@@ -1,0 +1,24 @@
+....F......................................................F........................................
+
+Failures:
+
+  1) Unfavoriting a movie deletes the favorite and shows the Fave button
+     Failure/Error: expect(page).to have_text("0 fans")
+       expected to find text "0 fans" in "Flix Example User | Account Settings | Sign Out Sorry you unfaved it! All Movies Iron Man 1659247038 Released: May 2, 2008 Tony Stark builds an armored suit to fight the throes of evil Genres PG-13 • 126 min Cast Robert Downey Jr., Gwyneth Paltrow and Terrence Howard Director Jon Favreau Total Gross $318,412,101.00 Average Review No reviews Reviews 0 reviews Write Review Copyright © 2013 The Pragmatic Studio For educational purposes only."
+     # ./spec/features/unfavoriting_a_movie_spec.rb:24:in `block (2 levels) in <top (required)>'
+
+  2) Favoriting a movie creates a favorite for the signed-in user and shows the Unfave button
+     Failure/Error: expect(page).to have_text("0 fans")
+       expected to find text "0 fans" in "Flix Example User | Account Settings | Sign Out All Movies Iron Man 2476850391 Released: May 2, 2008 Tony Stark builds an armored suit to fight the throes of evil Genres PG-13 • 126 min Cast Robert Downey Jr., Gwyneth Paltrow and Terrence Howard Director Jon Favreau Total Gross $318,412,101.00 Average Review No reviews Reviews 0 reviews Write Review Copyright © 2013 The Pragmatic Studio For educational purposes only."
+     # ./spec/features/favoriting_a_movie_spec.rb:14:in `block (2 levels) in <top (required)>'
+
+Finished in 2.93 seconds
+100 examples, 2 failures
+
+Failed examples:
+
+rspec ./spec/features/unfavoriting_a_movie_spec.rb:9 # Unfavoriting a movie deletes the favorite and shows the Fave button
+rspec ./spec/features/favoriting_a_movie_spec.rb:9 # Favoriting a movie creates a favorite for the signed-in user and shows the Unfave button
+
+Randomized with seed 15106
+

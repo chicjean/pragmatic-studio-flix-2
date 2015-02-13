@@ -1,0 +1,29 @@
+<header id="content-header">
+  <h1>Sign In</h1>
+</header>
+
+<%= form_tag(session_path) do %>
+  <fieldset>
+    <ol>
+      <li class="required">
+        <%= label_tag :email_or_username, "Username or Email" %>
+        <%= text_field_tag :email_or_username, nil, autofocus: true, size: 40, required: true %>
+      </li>
+      <li class="required">
+        <%= label_tag :password %>
+        <%= password_field_tag :password, nil, size: 40, required: true %>
+      </li>
+    </ol>
+    <p>
+      <%= submit_tag 'Sign In' %>
+    </p>
+  </fieldset>
+<% end %>
+
+<footer>
+	<p>
+  	No account yet? <%= link_to 'Sign up!', signup_path %>
+	</p>
+</footer>
+
+<!-- If you want to get fancy with HTML 5, you can use the new required attribute on input fields. Browsers that support HTML 5 won't allow a form to be submitted until all the fields marked as being required have a value. Those browsers also highlight the fields with missing values.That's kinda convenient in the case of a sign-in form since we don't have a corresponding model with validations. It also saves a trip back to the app if a field is left blank -->

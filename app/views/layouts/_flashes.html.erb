@@ -1,0 +1,7 @@
+<% flash.each do |key, value| %>
+  <%= content_tag(:p, value, :class => "flash #{key}") %>
+<% end %>
+
+<!-- The layout file currently only displays notice and alert flashes. You might want something a bit more flexible that can display arbitrary types of flash messages in a more generic way. It's a nice-to-have thing, so we went ahead and cooked up a solution for you.
+
+Don't let this throw you. It just iterates through all the flash keys and values, and uses the content_tag helper to generate a styled paragraph for each message. That way, whatever you put in the flash will get displayed with a little style. Notice that by using an iterator we don't need a conditional because the iterator only runs for the keys that are in the flash. -->

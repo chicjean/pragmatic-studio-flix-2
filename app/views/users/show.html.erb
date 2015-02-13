@@ -1,0 +1,61 @@
+<% content_for(:title, @user.name) %>
+
+<article id="user">
+  <header>
+    <%= profile_image_for(@user) %>
+    <!-- You should either see the default Gravatar image (a blue square) or an actual profile image if the user's email has already been associated with a Gravatar image. -->
+
+    <h1><%= @user.name %></h1>
+    <h2><%= @user.username %></h2>
+    <br>
+    <h2><%= mail_to(@user.email) %></h2>
+    <h3>Member Since</h3>
+      <p>
+        <%= @user.created_at.strftime("%B %Y") %>
+      </p>
+    </h3>
+  </header>
+
+  <body>
+    <% if @reviews.any? %>
+      <h3>Reviews</h3>
+      <ol id="reviews">
+      <% @reviews.each do |r| %>
+        <li>
+          <%= link_to r.movie.title, r.movie %>
+          <span class="review"><%= pluralize(r.stars, 'star') %></span>
+          <span class="date"><%= time_ago_in_words(r.created_at) %> ago</span>
+          <p>
+            &quot;<%= r.comment %>&quot;
+          </p>
+        </li>
+      <% end %>
+      </ol>
+    <% end %>
+  </body>
+  
+  <footer>
+  	<nav>
+      <% if current_user?(@user) %>
+        <%= link_to 'Edit Account', edit_user_path(@user), class: 'button' %>
+        <%= link_to 'Delete Account', @user, 
+                    method: :delete, 
+                    data: { confirm: 'Are you sure you want to permanently delete your account?' },
+                    class: 'button' %>
+      <% end %>
+    </nav>
+  </footer>
+</article>
+
+<% content_for(:side) do %>
+  <% if @favorite_movies.any? %>
+      <h3>Favorite Movies</h3>
+      <ul>
+        <% @favorite_movies.each do |movie| %>
+          <li>
+            <%= link_to movie.title, movie %>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+<% end %>
